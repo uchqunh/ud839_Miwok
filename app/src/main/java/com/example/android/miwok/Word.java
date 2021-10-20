@@ -33,7 +33,9 @@ public class Word {
     /**
      * Image
      */
-    private int imageResourceId;
+    private int imageResourceId=NO_IMAGE_PROVIDED;
+
+    private static final int NO_IMAGE_PROVIDED=-1;
 
     /**
      * Create a new Word object.
@@ -45,11 +47,8 @@ public class Word {
     public Word(String defaultTranslation, String miwokTranslation, int imageResource) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
-        if (imageResource!=0){
-        imageResourceId=imageResource;}
-        else{
-            imageResourceId=0;
-        }
+        imageResourceId=imageResource;
+
     }
 
     public Word(String defaultTranslation, String miwokTranslation) {
@@ -74,5 +73,9 @@ public class Word {
      * Get the image/
      */
     public int getImageResourceId() { return imageResourceId; }
+
+    public boolean hasImage(){
+        return imageResourceId!=NO_IMAGE_PROVIDED;
+    }
 
 }
